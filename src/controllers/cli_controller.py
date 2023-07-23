@@ -2,8 +2,8 @@ from flask import Blueprint
 from init import db, bcrypt
 from models.user import User
 from models.playlist import Playlist
-from models.song import Song
-from models.artist import Artist
+# from models.song import Song
+# from models.artist import Artist
 from datetime import date
 
 db_commands = Blueprint('db', __name__)
@@ -46,8 +46,63 @@ def seed_db():
         User(
             name= 'Scott User',
             email= 'scott@mail.com',
-            password= bcrypt.generate_paswores_hash('pasword12').decode('utf-8')
+            password= bcrypt.generate_password_hash('pasword12').decode('utf-8')
         )
     ]
 
     db.session.add_all(users)
+
+    playlists =[
+        Playlist(
+            title='Work',
+            date_created = date.today(),
+            description= 'Work Safe Music',
+            user =users[0]
+        ),
+        Playlist(
+            title = 'Pre-drinks',
+            date_created = date.today(),
+            description = 'Get me pumped',
+            user = users[0]
+        ),
+        Playlist(
+            title= 'Gym',
+            date_created= date.today(),
+            user =users[0]
+        ),
+        Playlist(
+            title = 'Sleep',
+            date_created= date.today(),
+            user =users[0]
+        ),
+        Playlist(
+            title = '40th Party',
+            date_created = date.today(),
+            description = 'Scotts Favourites',
+            user =users[0]
+        ),
+        Playlist(
+            title = '70s',
+            date_created = date.today(),
+            user = users[0]
+        ),
+        Playlist(
+            title = 'Todays Hits',
+            date_created = date.today(),
+            description = 'Latets and Best',
+            user = users[0]
+        ),
+        Playlist(
+            title = 'Road Trip',
+            date_created = date.today(),
+            description = 'Sing along fun',
+            user = users[0] 
+        )
+    ]
+
+
+    db.session.add_all(playlists)
+    db.session.commit()
+
+
+    print("Tables seeded")
