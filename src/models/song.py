@@ -9,5 +9,7 @@ class Song(db.Model):
     genre = db.Column(db.String(50), nullable=False)
 
     artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'), nullable=False)
-
+    # playlist_id = db.Column(db.Integer, db.ForeignKey('playlists.id'), nullable=False)
+    
     artist = db.relationship('Artist', back_populates='songs')
+    songlists = db.relationship('Songlist', back_populates='song')

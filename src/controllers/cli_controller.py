@@ -4,6 +4,7 @@ from models.user import User
 from models.playlist import Playlist
 from models.song import Song
 from models.artist import Artist
+from models.song_list import Songlist
 from datetime import date
 
 db_commands = Blueprint('db', __name__)
@@ -100,6 +101,7 @@ def seed_db():
         )
     ]
     db.session.add_all(playlists)
+
 
     artists =[
         Artist(
@@ -262,10 +264,141 @@ def seed_db():
             genre = 'Pop',
             artist = artists[8]
         )
-
     ]
-
     db.session.add_all(songs)
+
+    songlists =[
+        Songlist(
+            song = songs[2],
+            playlist = playlists[0]
+        ),
+        Songlist(
+            song = songs[7],
+            playlist = playlists[0]
+        ),
+        Songlist(
+            song = songs[20],
+            playlist = playlists[0]
+        ),
+        Songlist(
+            song = songs[22],
+            playlist = playlists[0]
+        ),
+        Songlist(
+            song = songs[23],
+            playlist = playlists[1]
+        ), 
+        Songlist(
+            song = songs[20],
+            playlist = playlists[1]
+        ),
+        Songlist(
+            song = songs[9],
+            playlist = playlists[1]
+        ),
+        Songlist(
+            song = songs[2],
+            playlist = playlists[1]
+        ),
+        Songlist(
+            song = songs[22],
+            playlist = playlists[2]
+        ),
+        Songlist(
+            song = songs[19],
+            playlist = playlists[2]
+        ),
+        Songlist(
+            song = songs[10],
+            playlist = playlists[2]
+        ),
+        Songlist(
+            song = songs[5],
+            playlist = playlists[2]
+        ),
+        Songlist(
+            song = songs[0],
+            playlist = playlists[3]
+        ),
+        Songlist(
+            song = songs[14],
+            playlist = playlists[3]
+        ),
+        Songlist(
+            song = songs[18],
+            playlist = playlists[3]
+        ),
+        Songlist(
+            song = songs[23],
+            playlist = playlists[4]
+        ),
+        Songlist(
+            song = songs[22],
+            playlist = playlists[4]
+        ),
+        Songlist(
+            song = songs[9],
+            playlist = playlists[4]
+        ),
+        Songlist(
+            song = songs[8],
+            playlist = playlists[4]
+        ),
+        Songlist(
+            song = songs[11],
+            playlist = playlists[5]
+        ),
+        Songlist(
+            song = songs[12],
+            playlist = playlists[5]
+        ),
+        Songlist(
+            song = songs[13],
+            playlist = playlists[5]
+        ),
+        Songlist(
+            song = songs[14],
+            playlist = playlists[5]
+        ),
+        Songlist(
+            song = songs[15],
+            playlist = playlists[5]
+        ), 
+        Songlist(
+            song = songs[2],
+            playlist = playlists[6]
+        ),
+        Songlist(
+            song = songs[3],
+            playlist = playlists[6]
+        ),
+        Songlist(
+            song = songs[0],
+            playlist = playlists[6]
+        ),
+        Songlist(
+            song = songs[6],
+            playlist = playlists[6]
+        ),
+        Songlist(
+            song = songs[22],
+            playlist = playlists[7]
+        ),
+        Songlist(
+            song = songs[19],
+            playlist = playlists[7]
+        ),
+        Songlist(
+            song = songs[13],
+            playlist = playlists[7]
+        ),
+        Songlist(
+            song = songs[11],
+            playlist = playlists[7]
+        ),                
+    ]
+    db.session.add_all(songlists)
+
     db.session.commit()
 
 

@@ -10,5 +10,8 @@ class Playlist(db.Model):
     description = db.Column(db.String(50))
     
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
+    
+    
     user = db.relationship('User', back_populates='playlists')
+    songlists = db.relationship('Songlist', back_populates='playlist')
+    
