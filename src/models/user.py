@@ -13,7 +13,7 @@ class User(db.Model):
     playlists = db.relationship('Playlist', back_populates='user', cascade='all, delete')
 
 class UserSchema(ma.Schema):
-    playlists = fields.List(fields.Nested('CardSchema', exclude= ['user']))
+    playlists = fields.List(fields.Nested('PlaylistSchema', exclude= ['user']))
     
     class Meta:
         fields= ('id', 'name', 'email', 'password', 'is_admin', 'playlists')

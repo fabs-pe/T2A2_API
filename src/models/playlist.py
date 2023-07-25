@@ -18,7 +18,7 @@ class Playlist(db.Model):
 
 class PlaylistSchema(ma.Schema):
     user = fields.Nested('UserSchema', only = ['name', 'email']) # joins user fields to playlist
-
+    
     class Meta:
         fields = ('id','title', 'date_created', 'decription', 'user')
         ordered = True

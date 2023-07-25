@@ -10,3 +10,12 @@ class Artist(db.Model):
 
     
     songs =db.relationship('Song', back_populates='artist',  cascade='all, delete')
+
+class ArtistSchema(ma.Schema):
+    songs = fields.List(fields.Nested('SongSchema', only= ['title', 'genre']))
+    
+    class Meta:
+        fields= ('id', 'artist_name', 'country', 'songs')
+
+artist_schema = ArtistSchema()
+artists_schema = ArtistSchema(many=True) 

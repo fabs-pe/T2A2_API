@@ -11,3 +11,14 @@ class Songlist(db.Model):
 
     song = db.relationship('Song', back_populates='songlists')
     playlist = db.relationship('Playlist', back_populates='songlists')
+
+class SonglistSchema(ma.Schema):
+    playlist = fields.Nested('PlaylistSchema', only = ['title']) # joins 
+    song = fields.Nested('SongSchema', only = ['id','title', 'genre'])
+    
+    class Meta:
+        fields = ('playlist', 'song')
+        ordered = True
+
+songlist_schema = SonglistSchema()
+songlists_schema = SonglistSchema(many=True)
