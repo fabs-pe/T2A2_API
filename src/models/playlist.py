@@ -15,3 +15,13 @@ class Playlist(db.Model):
     user = db.relationship('User', back_populates='playlists')
     songlists = db.relationship('Songlist', back_populates='playlist')
     
+
+class PlaylistSchema(ma.Schema):
+    user = fields.Nested('UserSchema', only = ['name', 'email']) # joins user fields to playlist
+
+    class Meta:
+        fields = ('id','title', 'date_created', 'decription', 'user')
+        ordered = True
+
+playlist_schema = PlaylistSchema()
+playlists_schema = PlaylistSchema(many=True)
