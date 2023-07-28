@@ -47,5 +47,5 @@ def delete_one_playlist(id):
         db.session.commit()
         return {'message': f'Playlist {playlist.title} deleted successfully'}
     else:
-        return {'error' : f'Playlist not found with id{id}'}, 404
+        return {'error' : f'Playlist not found with id {id}'}, 404
     
